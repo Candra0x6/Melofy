@@ -1,8 +1,6 @@
 ---
 
-# HarmonyHub - Your Musical Universe
-
-HarmonyHub is a powerful music website built with Next.js, Tailwind CSS, TypeScript, Chakra UI, and the Spotify Developer API. It provides a seamless and personalized music streaming experience for users, integrating Spotify's vast music catalog with innovative features.
+Melofy is a powerful music website built with Next.js, Tailwind CSS, TypeScript, Chakra UI, and the Spotify Developer API. It provides a seamless and personalized music streaming experience for users, integrating Spotify's vast music catalog with innovative features.
 
 ## Features
 
@@ -22,7 +20,7 @@ HarmonyHub is a powerful music website built with Next.js, Tailwind CSS, TypeScr
 
 - **API-powered Search**: Leverage Spotify's search capabilities to find specific tracks, artists, or albums effortlessly.
 
-- **Responsive Design**: HarmonyHub is designed for a consistent and user-friendly experience across various devices.
+- **Responsive Design**: Melofy is designed for a consistent and user-friendly experience across various devices.
 
 - **Community Forums**: Engage with other music enthusiasts in community forums to discuss favorite genres, artists, and playlists.
 
@@ -45,13 +43,13 @@ HarmonyHub is a powerful music website built with Next.js, Tailwind CSS, TypeScr
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/harmonyhub.git
+    git clone https://github.com/your-username/melofy.git
     ```
 
 2. Install dependencies:
 
     ```bash
-    cd harmonyhub
+    cd melofy
     npm install
     ```
 
