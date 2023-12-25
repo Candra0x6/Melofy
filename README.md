@@ -43,7 +43,7 @@ Melofy is a powerful music website built with Next.js, Tailwind CSS, TypeScript,
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/melofy.git
+    git clone https://github.com/Candra0x6/melofy.git
     ```
 
 2. Install dependencies:
