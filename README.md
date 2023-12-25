@@ -1,4 +1,4 @@
----
+## Melofy – Ultimate Spot for Music Lovers!
 
 Melofy is a powerful music website built with Next.js, Tailwind CSS, TypeScript, Chakra UI, and the Spotify Developer API. It provides a seamless and personalized music streaming experience for users, integrating Spotify's vast music catalog with innovative features.
 
