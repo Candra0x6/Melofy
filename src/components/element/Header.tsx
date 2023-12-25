@@ -16,7 +16,7 @@ function Header() {
                 type="text"
                 className="border-2 border-[#1C1818] lg:w-[50rem] bg-[#E9FAFF] rounded-full"
               />
-              <Image src={MusicIcon} className="z-10 fixed mr-5" />
+              <Image src={MusicIcon} className="z-10 absolute mr-5" />
             </div>
             <div className="">
               <Image src={UserIcon} />
