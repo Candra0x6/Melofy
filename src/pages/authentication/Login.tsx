@@ -3,7 +3,46 @@ import WestIcon from "@mui/icons-material/West";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 function Login() {
+  const urlParam = new URLSearchParams(window.location.search);
+  const getCode: string | null = urlParam.get("code") ?? "";
+  localStorage.setItem("code", getCode);
+
+  const codeAuth: string = localStorage.getItem("code") ?? "";
+  const clientSecret = "4c8149cb463e42e18020b74151e64283";
+  const clientId = "f79a68fe2a394b309c095317e1036c9e";
+  const redirectUrl = "http://localhost:5173/login";
+
+  const getUserAccessToken = async () => {
+    try {
+      const authHeader = `Basic ${btoa(`${clientId}:${clientSecret}`)}`;
+
+      const response = await axios.post(
+        "https://accounts.spotify.com/api/token",
+        new URLSearchParams({
+          grant_type: "authorization_code",
+          code: codeAuth,
+          redirect_uri: redirectUrl,
+        }),
+        {
+          headers: {
+            Authorization: authHeader,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      const AccessToken: string = response.data.access_token;
+      const RefreshToken: string = response.data.refresh_token;
+      localStorage.setItem("access_token", AccessToken);
+      localStorage.setItem("refresh_token", RefreshToken);
+      window.location.href = `/`;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="flex justify-center font-poppins">
       <div className="container mx-2">
@@ -68,6 +107,7 @@ function Login() {
                 textColor="white"
                 rounded="full"
                 fontWeight="normal"
+                onClick={getUserAccessToken}
               >
                 Login
               </Button>

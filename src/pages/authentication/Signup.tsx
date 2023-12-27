@@ -3,7 +3,17 @@ import WestIcon from "@mui/icons-material/West";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 function Signup() {
+  const clientId = "f79a68fe2a394b309c095317e1036c9e";
+  const redirectUrl = "http://localhost:5173/login";
+  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=code`;
+
+  const getAuth = () => {
+    window.location.href = authUrl;
+  };
+
   return (
     <div className="flex justify-center font-poppins">
       <div className="container mx-2">
@@ -44,7 +54,7 @@ function Signup() {
                   bgColor="#E2F4FA"
                   className="bg-[#AAC3CC]"
                   rounded="full"
-                  type="email"
+                  type="password"
                   textColor="#4E4E4E"
                   placeholder={`        Password`}
                 />
@@ -57,7 +67,7 @@ function Signup() {
                   bgColor="#E2F4FA"
                   className="bg-[#AAC3CC]"
                   rounded="full"
-                  type="email"
+                  type="password"
                   textColor="#4E4E4E"
                   placeholder={`        Confirm Password`}
                 />
@@ -72,6 +82,7 @@ function Signup() {
                 textColor="white"
                 rounded="full"
                 fontWeight="normal"
+                onClick={getAuth}
               >
                 Sign Up
               </Button>

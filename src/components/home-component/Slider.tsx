@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,13 +10,64 @@ import music1 from "../../assets/music1.jpeg";
 import music2 from "../../assets/music2.jpeg";
 import music3 from "../../assets/music3.jpeg";
 import music4 from "../../assets/music4.jpeg";
+import axios from "axios";
 
 interface ArrowSlide {
   onClick: () => void;
 }
 function SliderSection() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+  const [album, setAlbum] = useState<[]>([]);
   const Image = [music1, music2, music3, music4];
+  const getAT = localStorage.getItem("access_token");
+  const RefreshToken = localStorage.getItem("refresh_token");
+  const getNewToken = async () => {
+    try {
+      const getToken = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_TOKEN_BASE_URL}`,
+        {
+          grant_type: "refresh_token",
+          refresh_token: RefreshToken,
+          client_id: import.meta.env.VITE_REACT_APP_CLIENT_ID,
+          client_secret: import.meta.env.VITE_REACT_APP_CLIENT_SECRET,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      console.log(getToken);
+      const token = getToken.data.access_token;
+      localStorage.setItem("access_token", token);
+      console.log(getToken);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getAlbumMusix = async () => {
+    try {
+      const response = await axios.get(
+        "https://api.spotify.com/v1/browse/featured-playlists",
+        {
+          headers: {
+            Authorization: `Bearer ${getAT}`,
+          },
+        }
+      );
+      const playlistData = response.data.playlists.items;
+      setAlbum(playlistData);
+    } catch (e) {
+      console.log(e);
+    }
+    // Panggil fungsi
+  };
+
+  console.log(album);
+  useEffect(() => {
+    getAlbumMusix();
+  }, []);
   const NextArrow: React.FC<ArrowSlide> = ({ onClick }) => {
     return (
       <Box
@@ -85,7 +136,7 @@ function SliderSection() {
         </h1>
       </div>
       <Slider {...SliderSetting} className="mt-10">
-        {Image.map((val, key) => (
+        {album.map((val, key) => (
           <div
             className={`duration-500 transition-transform rounded-lg ${
               key === selectedImageIndex
@@ -94,7 +145,7 @@ function SliderSection() {
             }`}
           >
             <img
-              src={val}
+              src={val.images[0].url}
               className=" rounded-[1.7rem]"
               alt={`MusicALbum ${key}`}
             />
