@@ -5,8 +5,8 @@ import App from "./App";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 const font_custom = extendTheme({
   fonts: {
-    body: `'Krona One', sans-serif, 'Poppins', sans-serif`,
-    heading: `'Krona One', sans-serif, 'Poppins', sans-serif`,
+    body: `'Poppins', sans-serif`,
+    heading: ` 'Poppins', sans-serif`,
   },
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
