@@ -3,8 +3,7 @@ import WestIcon from "@mui/icons-material/West";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
+
 function Signup() {
   const clientId = "f79a68fe2a394b309c095317e1036c9e";
   const redirectUrl = "http://localhost:5173/login";
