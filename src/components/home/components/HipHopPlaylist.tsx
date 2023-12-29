@@ -39,25 +39,26 @@ function HipHopPlaylist() {
       </Flex>
       <Flex className="overflow-x-auto no-scrollbar">
         <Grid row="auto" gap={4} display="flex" w="full">
-          {hipHopPlaylist.map((val, key) => (
-            <Box
-              key={key}
-              display="flex"
-              flexDirection="column"
-              justifyContent="start"
-            >
-              <Image
-                src={val.images[0].url}
-                rounded="10px"
-                maxW="8rem"
-                maxH="8rem"
-              />
-              <Heading fontWeight="semibold" fontSize="14px">
-                {val.name}
-              </Heading>
-              <Text fontSize="10px">{val.description}</Text>
-            </Box>
-          ))}
+          {hipHopPlaylist.length > 0 &&
+            hipHopPlaylist.map((val, key) => (
+              <Box
+                key={key}
+                display="flex"
+                flexDirection="column"
+                justifyContent="start"
+              >
+                <Image
+                  src={val.images[0].url}
+                  rounded="10px"
+                  maxW="8rem"
+                  maxH="8rem"
+                />
+                <Heading fontWeight="semibold" fontSize="14px">
+                  {val.name}
+                </Heading>
+                <Text fontSize="10px">{val.description}</Text>
+              </Box>
+            ))}
         </Grid>
       </Flex>
     </Flex>
