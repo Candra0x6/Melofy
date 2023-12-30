@@ -10,43 +10,29 @@ import {
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect } from "react";
 import UseNewAlbums from "../hooks/UseNewAlbums";
+import { ArrowForwardIos } from "@mui/icons-material";
+import axios from "axios";
 export default function NewReleases() {
-  const { getNewReleaseAlbum, newAlbums } = UseNewAlbums();
-  // const getPlaylistByCategory = async () => {
-  //   try {
-  //     const fetch = await axios.get(
-  //       `${import.meta.env.VITE_REACT_APP_BASE_URL}/browse/categories`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${getAT}`,
-  //         },
-  //       }
-  //     );
-  //     console.log(fetch);
-  //   } catch (e) {}
-  // };
+  const { getNewReleaseAlbum, newAlbums, getPlaylistByCategory } =
+    UseNewAlbums();
+
   useEffect(() => {
+    getPlaylistByCategory();
     getNewReleaseAlbum();
   }, []);
   return (
     <Flex display="inline-block" w="full" pt="1rem">
-      <Flex justifyContent="space-between" alignItems="center">
+      <Flex justifyContent="space-between" alignItems="center" pb="10px">
         <h1 className="font-medium font-krona text-[12px] text-center">
           <span className=" before:absolute before:inset-2 before:left-0 before:w-full before:h-1/2 before:bg-[#B1DEEC] relative inline-block">
-            <span className="relative text-black ">New Release Albums</span>
+            <span className="relative text-black ">New Albums</span>
           </span>
         </h1>
-        <Box>
-          <Button
-            textColor="#5B7C87"
-            colorScheme="transparant"
-            fontWeight="lighter"
-            fontSize="10px"
-          >
-            See All
-            <ArrowForwardIosIcon sx={{ fontSize: "10px" }} />
-          </Button>
-        </Box>
+
+        <button className="text-[10px] text-[#838383] flex items-center">
+          See All
+          <ArrowForwardIos sx={{ fontSize: "10px" }} />
+        </button>
       </Flex>
       <Flex className="overflow-x-auto no-scrollbar">
         <Grid row="auto" gap={4} display="flex" w="full">
