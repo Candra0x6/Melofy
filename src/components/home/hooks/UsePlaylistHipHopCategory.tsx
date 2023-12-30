@@ -23,7 +23,6 @@ function UsePlaylistHipHopCategory() {
     } catch (e) {}
   };
 
-  console.log(localStorage);
   return {
     getPlaylistByHipHopCategory,
     hipHopPlaylist,
