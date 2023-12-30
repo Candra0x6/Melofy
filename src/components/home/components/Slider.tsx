@@ -114,9 +114,9 @@ function SliderSection() {
     infinite: true,
     lazyLoad: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
+    centerPadding: "80px",
     centerMode: true,
-    centerPadding: "0px",
     nextArrow: <NextArrow onClick={() => {}} />,
     prevArrow: <PrevArrow onClick={() => {}} />,
     beforeChange: (currentSlide: number, nextSlide: number) =>
@@ -137,7 +137,7 @@ function SliderSection() {
             key={key}
             className={`duration-500 transition-transform rounded-lg ${
               key === selectedImageIndex
-                ? "scale-105 opacity-100"
+                ? "scale-100 opacity-100"
                 : "scale-90 opacity-90 blur-[2px] brightness-[0.5]"
             }`}
           >
