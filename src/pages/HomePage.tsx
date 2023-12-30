@@ -1,5 +1,6 @@
 import HipHopPlaylist from "../components/home/components/HipHopPlaylist";
 import NewReleases from "../components/home/components/NewReleases";
+import PopularArtists from "../components/home/components/PopularArtists";
 import RecomendedPlaylist from "../components/home/components/RecomendedPlaylist";
 import Slider from "../components/home/components/Slider";
 
@@ -13,6 +14,7 @@ function HomePage() {
         <RecomendedPlaylist />
         <NewReleases />
         <HipHopPlaylist />
+        <PopularArtists />
       </div>
     </div>
   );
