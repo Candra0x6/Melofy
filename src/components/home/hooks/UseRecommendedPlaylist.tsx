@@ -48,7 +48,6 @@ function UseRecommendedPlaylist() {
       console.error(e);
     }
   };
-  console.log(localStorage);
   useEffect(() => {
     // Looping by arrays of playlistsID
     playlistsID.forEach((playlistID: string) => {
