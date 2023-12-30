@@ -18,7 +18,7 @@ function Signup() {
       <div className="container mx-2">
         <div className="flex flex-col">
           <div className="mt-5">
-            <Link to={`/welcome`}>
+            <Link to={`/`}>
               <IconButton
                 aria-label="Backk"
                 bgColor="transparent"

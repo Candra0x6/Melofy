@@ -6,13 +6,18 @@ import Cover from "./pages/authentication/Cover";
 import Signup from "./pages/authentication/Signup";
 
 function App() {
+  const ac = localStorage.getItem("access_token");
+
+  const simpleauth = (): boolean => {
+    return ac ? true : false;
+  };
+
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={simpleauth() ? <HomePage /> : <Cover />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/welcome" element={<Cover />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
