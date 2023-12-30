@@ -21,7 +21,7 @@ function CoverButton() {
               <div
                 className={`text-center z-0 w-full h-full absolute  flex items-center justify-center rounded-full transition-all duration-500 ${
                   changeButton === 0
-                    ? "bg-[#373739] -z-10 translate-x-0"
+                    ? "bg-[#373739] -z-20 translate-x-0"
                     : "bg-transparent translate-x-36"
                 }`}
               ></div>
@@ -42,7 +42,7 @@ function CoverButton() {
               <div
                 className={`text-center z-0 w-full h-full absolute  flex items-center justify-center rounded-full transition-all duration-500 ${
                   changeButton === 1
-                    ? "bg-[#373739] -z-10 translate-x-0"
+                    ? "bg-[#373739] -z-20 translate-x-0"
                     : "bg-transparent -translate-x-36"
                 }`}
               ></div>
