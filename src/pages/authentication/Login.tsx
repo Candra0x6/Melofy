@@ -33,6 +33,7 @@ function Login() {
           },
         }
       );
+      console.log(response);
       const AccessToken: string = response.data.access_token;
       const RefreshToken: string = response.data.refresh_token;
       localStorage.setItem("access_token", AccessToken);
@@ -48,7 +49,7 @@ function Login() {
       <div className="container mx-2">
         <div className="flex flex-col">
           <div className="mt-5">
-            <Link to={`/welcome`}>
+            <Link to={`/`}>
               <IconButton
                 aria-label="Backk"
                 bgColor="transparent"
