@@ -49,7 +49,6 @@ function UseRecommendedPlaylist() {
     }
   };
   useEffect(() => {
-    // Looping by arrays of playlistsID
     playlistsID.forEach((playlistID: string) => {
       getShowByIds(playlistID);
     });
