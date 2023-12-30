@@ -22,9 +22,24 @@ function UseNewAlbums() {
       setNewAlbums(data);
     } catch (e) {}
   };
+
+  const getPlaylistByCategory = async () => {
+    try {
+      const fetch = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_BASE_URL}/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${getAT}`,
+          },
+        }
+      );
+      console.log(fetch);
+    } catch (e) {}
+  };
   return {
     newAlbums,
     getNewReleaseAlbum,
+    getPlaylistByCategory,
   };
 }
 
