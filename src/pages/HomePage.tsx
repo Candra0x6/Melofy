@@ -1,3 +1,4 @@
+import CategoryPlaylist from "../components/home/components/CategoryPlaylist";
 import HipHopPlaylist from "../components/home/components/HipHopPlaylist";
 import NewReleases from "../components/home/components/NewReleases";
 import PopularArtists from "../components/home/components/PopularArtists";
@@ -10,11 +11,12 @@ function HomePage() {
       <div className="container">
         <Slider />
       </div>
-      <div className="overflow-hidden relative w-full">
+      <div className="overflow-hidden relative w-full flex flex-col gap-y-5 ">
         <RecomendedPlaylist />
         <NewReleases />
         <HipHopPlaylist />
         <PopularArtists />
+        <CategoryPlaylist />
       </div>
     </div>
   );

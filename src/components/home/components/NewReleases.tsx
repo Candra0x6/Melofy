@@ -21,7 +21,7 @@ export default function NewReleases() {
     getNewReleaseAlbum();
   }, []);
   return (
-    <Flex display="inline-block" w="full" pt="1rem">
+    <Flex display="inline-block" w="full">
       <Flex justifyContent="space-between" alignItems="center" pb="10px">
         <h1 className="font-medium font-krona text-[12px] text-center">
           <span className=" before:absolute before:inset-2 before:left-0 before:w-full before:h-1/2 before:bg-[#B1DEEC] relative inline-block">
