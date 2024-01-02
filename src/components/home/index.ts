@@ -84,6 +84,19 @@ export interface Artis {
   type: string;
   uri: string;
 }
+
+export interface CategoryList {
+  href: string;
+  icons: [
+    {
+      url: string;
+      height: number | null;
+      width: number | null;
+    }
+  ];
+  id: string;
+  name: string;
+}
 export interface ArrowSlide {
   onClick: () => void;
 }
