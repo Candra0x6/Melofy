@@ -26,6 +26,28 @@ export interface Playlist {
   tracks: {
     href: string;
     total: number;
+    items: {
+      added_at: string;
+      is_local: boolean;
+      primary_color: string | null;
+      track: {
+        album: NewAlbums;
+        artists: {
+          href: string;
+          id: string;
+          name: string;
+          type: string;
+          uri: string;
+        }[];
+        name: string;
+        popularity: number;
+        preview_url: string;
+        track: boolean;
+        track_number: number;
+        type: string;
+        uri: string;
+      };
+    }[];
   };
   type: string;
   uri: string;
