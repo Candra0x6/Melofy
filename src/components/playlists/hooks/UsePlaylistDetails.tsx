@@ -7,6 +7,7 @@ function UsePlaylistDetails() {
   const [playlistDetail, setPlaylistDetail] = useState<Playlist>();
   const getAt = localStorage.getItem("access_token");
   const { playlist_id } = useParams();
+  //   get playlist detail from api
   const getPlaylistDetails = async () => {
     try {
       const playlist = await axios.get(

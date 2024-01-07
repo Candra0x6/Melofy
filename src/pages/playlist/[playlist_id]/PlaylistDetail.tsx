@@ -1,14 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Playlist } from "../../../components/home";
 import PlaylistIMG from "../../../assets/music1.jpeg";
 import { IconButton, Image } from "@chakra-ui/react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import UsePlaylistDetails from "../../../components/playlists/hooks/UsePlaylistDetails";
 function PlaylistDetail() {
   const { playlistDetail } = UsePlaylistDetails();
-
+  //   truncate text more than 3 words
   const truncateText = (text: string, maxWords: number) => {
     const words = text.split(" ");
 
