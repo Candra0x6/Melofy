@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
 import { ArrowSlide, AxiosErrorResponse, Playlist } from "..";
+import { Link } from "react-router-dom";
 
 function SliderSection() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
@@ -36,7 +37,7 @@ function SliderSection() {
     }
   };
 
-  const getAlbumMusix = async () => {
+  const getTopPlaylist = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_REACT_APP_BASE_URL}/browse/featured-playlists`,
@@ -48,6 +49,7 @@ function SliderSection() {
       );
       const playlistData = response.data.playlists.items;
       setAlbum(playlistData);
+      console.log(playlistData);
     } catch (e) {
       const axiosError = e as AxiosErrorResponse;
       if (
@@ -62,7 +64,7 @@ function SliderSection() {
   };
 
   useEffect(() => {
-    getAlbumMusix();
+    getTopPlaylist();
   }, []);
   const NextArrow: React.FC<ArrowSlide> = ({ onClick }) => {
     return (
@@ -113,7 +115,9 @@ function SliderSection() {
   const SliderSetting = {
     infinite: true,
     lazyLoad: true,
-    speed: 500,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 5000,
     slidesToShow: 1,
     centerPadding: "80px",
     centerMode: true,
@@ -123,7 +127,7 @@ function SliderSection() {
       setSelectedImageIndex(nextSlide),
   };
   return (
-    <div className="flex flex-col pt-5">
+    <div className="flex flex-col pt-10">
       <div className="flex w-full justify-center">
         <h1 className="font-bold font-krona text-xl text-center">
           <span className=" before:absolute before:inset-3.5 before:left-0 before:w-full before:h-1/2 before:bg-[#B1DEEC] relative inline-block">
@@ -131,23 +135,27 @@ function SliderSection() {
           </span>
         </h1>
       </div>
-      <Slider {...SliderSetting} className="mt-10">
-        {album.map((val, key) => (
-          <div
-            key={key}
-            className={`duration-500 transition-transform rounded-lg ${
-              key === selectedImageIndex
-                ? "scale-100 opacity-100"
-                : "scale-90 opacity-90 blur-[2px] brightness-[0.5]"
-            }`}
-          >
-            <img
-              src={val.images[0].url}
-              className=" rounded-[1.7rem] "
-              alt={`MusicALbum ${key}`}
-            />
-          </div>
-        ))}
+      <Slider key={album.length} {...SliderSetting} className="mt-10">
+        {album.length > 0 &&
+          album &&
+          album.map((val, key) => (
+            <Link key={key} to={`/playlists/${val.id}`}>
+              <div
+                key={key}
+                className={`duration-500 transition-transform rounded-lg ${
+                  key === selectedImageIndex
+                    ? "scale-100 opacity-100"
+                    : "scale-90 opacity-90 blur-[2px] brightness-[0.5]"
+                }`}
+              >
+                <img
+                  src={val.images[0].url}
+                  className=" rounded-[1.7rem] "
+                  alt={`MusicALbum ${key}`}
+                />
+              </div>
+            </Link>
+          ))}
       </Slider>
       <div className="slider"></div>
     </div>

@@ -24,7 +24,7 @@ function PopularArtists() {
         alignItems="center"
         rowGap={3}
         className=""
-        h="20rem"
+        h="full"
       >
         {artist.length > 0 &&
           artist.map((artist, key) => (
