@@ -24,11 +24,10 @@ function UsePlaylistDetails() {
       console.log(err);
     }
   };
-  useEffect(() => {
-    getPlaylistDetails();
-  }, []);
+
   return {
     playlistDetail,
+    getPlaylistDetails,
   };
 }
 
