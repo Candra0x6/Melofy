@@ -1,4 +1,4 @@
-import UseCategoryPlaylist from "../hooks/UseCategoryPlaylist";
+import UseCategoryPlaylist from "../../../hooks/UseCategoryPlaylist";
 import { Box, Flex, Heading, Image, SimpleGrid } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
 

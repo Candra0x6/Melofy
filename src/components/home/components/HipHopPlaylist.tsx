@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 import { useEffect } from "react";
-import UsePlaylistHipHopCategory from "../hooks/UsePlaylistHipHopCategory";
+import UsePlaylistHipHopCategory from "../../../hooks/UsePlaylistHipHopCategory";
 
 function HipHopPlaylist() {
   const { getPlaylistByHipHopCategory, hipHopPlaylist } =

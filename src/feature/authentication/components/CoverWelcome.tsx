@@ -1,4 +1,4 @@
-import Logo from "../../../assets/melofy.png";
+import Logo from "../../../assets/MusicIcon/melofy.png";
 
 function CoverWelcome() {
   return (

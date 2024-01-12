@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
-import UseRecommendedPlaylist from "../hooks/UseRecommendedPlaylist";
+import UseRecommendedPlaylist from "../../../hooks/UseRecommendedPlaylist";
 
 function RecomendedPlaylist() {
   const { recommendedPlaylistData } = UseRecommendedPlaylist();

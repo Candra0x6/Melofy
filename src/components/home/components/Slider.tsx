@@ -6,7 +6,7 @@ import { Box, IconButton } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import { ArrowSlide, AxiosErrorResponse, Playlist } from "..";
+import { ArrowSlide, AxiosErrorResponse, Playlist } from "../../../hooks";
 import { Link } from "react-router-dom";
 
 function SliderSection() {
