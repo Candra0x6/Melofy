@@ -8,16 +8,16 @@ import Slider from "../../components/home/components/Slider";
 function HomePage() {
   return (
     <main>
-      <div className="flex flex-col justify-center items-center mx-1 sticky overflow-hidden">
+      <div className="flex flex-col justify-center items-center mx-1 sticky overflow-hidden bg-[#F7FCFE]">
         <div className="container">
           <Slider />
-        </div>
-        <div className="overflow-hidden relative w-full flex flex-col gap-y-5 ">
-          <RecomendedPlaylist />
-          <NewReleases />
-          <HipHopPlaylist />
-          <PopularArtists />
-          <CategoryPlaylist />
+          <div className="overflow-hidden relative w-full flex flex-col gap-y-5 ">
+            <RecomendedPlaylist />
+            <NewReleases />
+            <HipHopPlaylist />
+            <PopularArtists />
+            <CategoryPlaylist />
+          </div>
         </div>
       </div>
     </main>
