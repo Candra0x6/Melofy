@@ -7,7 +7,15 @@ import { Link } from "react-router-dom";
 function Signup() {
   const clientId = "f79a68fe2a394b309c095317e1036c9e";
   const redirectUrl = "http://localhost:5173/login";
-  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=code`;
+  const scopes = [
+    "user-read-playback-state",
+    "user-modify-playback-state",
+    "user-read-currently-playing",
+  ];
+
+  const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(
+    "%20"
+  )}&response_type=code&show_dialog=true`;
 
   const getAuth = () => {
     window.location.href = authUrl;
