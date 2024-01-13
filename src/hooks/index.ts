@@ -39,6 +39,7 @@ export interface Playlist {
           type: string;
           uri: string;
         }[];
+        id: string | null;
         name: string;
         popularity: number;
         preview_url: string;
@@ -51,6 +52,29 @@ export interface Playlist {
   };
   type: string;
   uri: string;
+}
+
+export interface Track {
+  album: NewAlbums;
+  artists: {
+    href: string;
+    id: string;
+    name: string;
+    type: string;
+    uri: string;
+  }[];
+  id: string | null;
+  name: string;
+  popularity: number;
+  preview_url: string;
+  track: boolean;
+  track_number: number;
+  type: string;
+  uri: string;
+  duration_ms: number;
+  explicit: boolean;
+  is_local: boolean;
+  disx_number: number;
 }
 
 export interface NewAlbums {
@@ -83,6 +107,8 @@ export interface NewAlbums {
   type: string;
   uri: string;
 }
+[];
+
 export interface Artis {
   external_urls: {
     spotify: string;
