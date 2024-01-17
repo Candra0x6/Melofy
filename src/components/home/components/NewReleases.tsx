@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import UseNewAlbums from "../../../hooks/UseNewAlbums";
 import { ArrowForwardIos } from "@mui/icons-material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 export default function NewReleases() {
   const { getNewReleaseAlbum, newAlbums, getPlaylistByCategory } =
     UseNewAlbums();
@@ -38,27 +39,29 @@ export default function NewReleases() {
         <Grid row="auto" gap={4} display="flex" w="full">
           {newAlbums.length > 0 &&
             newAlbums.map((val, key) => (
-              <Box
-                key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="start"
-              >
-                <Image
-                  src={val.images[0].url}
-                  rounded="10px"
-                  maxW="8rem"
-                  maxH="8rem"
-                />
-                <Heading fontWeight="semibold" fontSize="14px">
-                  {val.name}
-                </Heading>
-                {val.artists.map((artist) => (
-                  <Text key={artist.id} fontSize="10px">
-                    {artist.name}
-                  </Text>
-                ))}
-              </Box>
+              <Link to={`/album/${val.id}`} key={key}>
+                <Box
+                  key={key}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="start"
+                >
+                  <Image
+                    src={val.images[0].url}
+                    rounded="10px"
+                    maxW="8rem"
+                    maxH="8rem"
+                  />
+                  <Heading fontWeight="semibold" fontSize="14px">
+                    {val.name}
+                  </Heading>
+                  {val.artists.map((artist) => (
+                    <Text key={artist.id} fontSize="10px">
+                      {artist.name}
+                    </Text>
+                  ))}
+                </Box>
+              </Link>
             ))}
         </Grid>
       </Flex>

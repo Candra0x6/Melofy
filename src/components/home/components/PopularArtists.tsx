@@ -1,7 +1,6 @@
 import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import img from "../../../assets/music1.jpeg";
 import UsePopularArtist from "../../../hooks/UsePopularArtist";
 function PopularArtists() {
   const { artist } = UsePopularArtist();

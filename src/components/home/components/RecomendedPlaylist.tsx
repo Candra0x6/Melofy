@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 import UseRecommendedPlaylist from "../../../hooks/UseRecommendedPlaylist";
+import { Link } from "react-router-dom";
 
 function RecomendedPlaylist() {
   const { recommendedPlaylistData } = UseRecommendedPlaylist();
@@ -33,23 +34,29 @@ function RecomendedPlaylist() {
         <Grid row="auto" gap={4} display="flex" w="full">
           {recommendedPlaylistData.length > 0 &&
             recommendedPlaylistData.map((val, key) => (
-              <Box
+              <Link
                 key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="start"
+                to={`/playlists/${
+                  val.id
+                }?playlist-name=${val.name.toLowerCase()}`}
               >
-                <Image
-                  src={val.images[0].url}
-                  rounded="10px"
-                  maxW="8rem"
-                  maxH="8rem"
-                />
-                <Heading fontWeight="semibold" fontSize="14px">
-                  {val.name}
-                </Heading>
-                <Text fontSize="10px">{val.description}</Text>
-              </Box>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="start"
+                >
+                  <Image
+                    src={val.images[0].url}
+                    rounded="10px"
+                    maxW="8rem"
+                    maxH="8rem"
+                  />
+                  <Heading fontWeight="semibold" fontSize="14px">
+                    {val.name}
+                  </Heading>
+                  <Text fontSize="10px">{val.description}</Text>
+                </Box>
+              </Link>
             ))}
         </Grid>
       </Flex>

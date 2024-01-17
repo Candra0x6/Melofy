@@ -10,6 +10,7 @@ import {
 import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
 import { useEffect } from "react";
 import UsePlaylistHipHopCategory from "../../../hooks/UsePlaylistHipHopCategory";
+import { Link } from "react-router-dom";
 
 function HipHopPlaylist() {
   const { getPlaylistByHipHopCategory, hipHopPlaylist } =
@@ -35,23 +36,30 @@ function HipHopPlaylist() {
         <Grid row="auto" gap={4} display="flex" w="full">
           {hipHopPlaylist.length > 0 &&
             hipHopPlaylist.map((val, key) => (
-              <Box
+              <Link
+                to={`/playlists/${
+                  val.id
+                }?playlist-name=${val.name.toLowerCase()}`}
                 key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="start"
               >
-                <Image
-                  src={val.images[0].url}
-                  rounded="10px"
-                  maxW="8rem"
-                  maxH="8rem"
-                />
-                <Heading fontWeight="semibold" fontSize="14px">
-                  {val.name}
-                </Heading>
-                <Text fontSize="10px">{val.description}</Text>
-              </Box>
+                <Box
+                  key={key}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="start"
+                >
+                  <Image
+                    src={val.images[0].url}
+                    rounded="10px"
+                    maxW="8rem"
+                    maxH="8rem"
+                  />
+                  <Heading fontWeight="semibold" fontSize="14px">
+                    {val.name}
+                  </Heading>
+                  <Text fontSize="10px">{val.description}</Text>
+                </Box>
+              </Link>
             ))}
         </Grid>
       </Flex>

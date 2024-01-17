@@ -1,6 +1,7 @@
 import UseCategoryPlaylist from "../../../hooks/UseCategoryPlaylist";
 import { Box, Flex, Heading, Image, SimpleGrid } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 function CategoryPlaylist() {
   const { categoryPlaylist } = UseCategoryPlaylist();
@@ -29,32 +30,39 @@ function CategoryPlaylist() {
         >
           {categoryPlaylist.length > 0 &&
             categoryPlaylist.map((val, key) => (
-              <Box
+              <Link
+                to={`/playlists/${
+                  val.id
+                }?playlist-name=${val.name.toLowerCase()}`}
                 key={key}
-                display="flex"
-                flexDirection="column"
-                justifyContent="end"
-                className="items-center"
-                position="relative"
               >
-                <Image
-                  src={val.icons[0].url}
-                  rounded="1rem "
-                  w="full"
-                  maxW="full"
-                  maxH="70px"
-                />
-                <Heading
-                  position="absolute"
-                  fontWeight="semibold"
-                  fontSize="10px"
-                  textColor="white"
-                  textAlign="center"
-                  marginBottom="3px"
+                <Box
+                  key={key}
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="end"
+                  className="items-center"
+                  position="relative"
                 >
-                  {val.name}
-                </Heading>
-              </Box>
+                  <Image
+                    src={val.icons[0].url}
+                    rounded="1rem "
+                    w="full"
+                    maxW="full"
+                    maxH="70px"
+                  />
+                  <Heading
+                    position="absolute"
+                    fontWeight="semibold"
+                    fontSize="10px"
+                    textColor="white"
+                    textAlign="center"
+                    marginBottom="3px"
+                  >
+                    {val.name}
+                  </Heading>
+                </Box>
+              </Link>
             ))}
         </SimpleGrid>
       </Flex>
