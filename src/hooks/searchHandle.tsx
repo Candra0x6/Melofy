@@ -1,15 +1,21 @@
+// src/components/SearchHandle.tsx
 import axios from "axios";
-import { useState } from "react";
-import { SearchResult } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchResult, setSearchQuery } from "../global/store/search";
+import { RootState } from "../global/store";
 
-function searchHandle() {
-  const [searchResult, setSearchResult] = useState<SearchResult>();
+function SearchHandle() {
+  const dispatch = useDispatch();
+  const { searchResult, searchQuery } = useSelector(
+    (state: RootState) => state.search
+  );
+
   const getSearchResult = async (q: string) => {
     try {
       const response = await axios.get(
         `${
           import.meta.env.VITE_REACT_APP_BASE_URL
-        }/search?q=${q}&type=track%2Calbum%2Cplaylist%2Cartist&limit=5`,
+        }/search?q=${q}&type=track%2Calbum%2Cplaylist%2Cartist&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -17,7 +23,8 @@ function searchHandle() {
         }
       );
       const result = response.data;
-      setSearchResult(result);
+      dispatch(setSearchQuery(q));
+      dispatch(setSearchResult(result));
     } catch (error) {
       console.log(error);
     }
@@ -29,10 +36,12 @@ function searchHandle() {
     } else {
     }
   };
+
   return {
     valueFilter,
     searchResult,
+    searchQuery,
   };
 }
 
-export default searchHandle;
+export default SearchHandle;

@@ -5,18 +5,11 @@ import UsePlaylistDetails from "../../../hooks/UsePlaylistDetails";
 import WestIcon from "@mui/icons-material/West";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import UseTruncateText from "../../../hooks/UseTruncateText";
 function PlaylistDetail() {
   const { playlistDetail, getPlaylistDetails } = UsePlaylistDetails();
   //   truncate text more than 3 words
-  const truncateText = (text: string, maxWords: number) => {
-    if (text) {
-      const words = text.split(" ");
-      if (words.length > maxWords) {
-        return words.slice(0, maxWords).join(" ") + "...";
-      }
-      return text;
-    }
-  };
+  const { truncateText } = UseTruncateText();
   useEffect(() => {
     getPlaylistDetails();
   }, []);
