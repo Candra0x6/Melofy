@@ -1,9 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Header from "./components/element/Header";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 import Login from "./pages/authentication/Login";
 import Cover from "./pages/authentication/Cover";
 import Signup from "./pages/authentication/Signup";
+import PlaylistDetail from "./pages/playlist/[playlist_id]/PlaylistDetail";
+import TrackPlayer from "./pages/track/[track_id]/TrackPlayer";
+import SearchPage from "./pages/search/SearchPage";
 
 function App() {
   const ac = localStorage.getItem("access_token");
@@ -19,6 +22,10 @@ function App() {
         <Route path="/" element={simpleauth() ? <HomePage /> : <Cover />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/playlist/:playlist_id" element={<PlaylistDetail />} />
+        <Route path="/track/:track_id" element={<TrackPlayer />} />
+        <Route path="*" element={<Cover />} />
       </Routes>
     </Router>
   );
