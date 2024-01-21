@@ -6,12 +6,12 @@ import { Box, IconButton } from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import { ArrowSlide, AxiosErrorResponse, Playlist } from "../../../hooks";
+import { ArrowSlide, AxiosErrorResponse, Playlists } from "../../../hooks";
 import { Link } from "react-router-dom";
 
 function SliderSection() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
-  const [album, setAlbum] = useState<Playlist[]>([]);
+  const [album, setAlbum] = useState<Playlists[]>([]);
   const getAT = localStorage.getItem("access_token");
   const RefreshToken = localStorage.getItem("refresh_token");
   const getNewToken = async () => {
@@ -139,7 +139,10 @@ function SliderSection() {
         {album.length > 0 &&
           album &&
           album.map((val, key) => (
-            <Link key={key} to={`/playlists/${val.id}`}>
+            <Link
+              key={key}
+              to={`/playlist/${val.id}?playlist-name=${val.name.toLowerCase()}`}
+            >
               <div
                 key={key}
                 className={`duration-500 transition-transform rounded-lg ${

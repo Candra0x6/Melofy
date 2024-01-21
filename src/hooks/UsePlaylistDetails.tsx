@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Playlist } from ".";
+import { Playlists } from ".";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function UsePlaylistDetails() {
-  const [playlistDetail, setPlaylistDetail] = useState<Playlist>();
+  const [playlistDetail, setPlaylistDetail] = useState<Playlists>();
   const getAt = localStorage.getItem("access_token");
   const { playlist_id } = useParams();
   //   get playlist detail from api

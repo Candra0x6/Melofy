@@ -1,4 +1,4 @@
-export interface Playlist {
+export interface Playlists {
   collaborative: boolean;
   description: string;
   external_urls: { spotify: string };
@@ -31,7 +31,7 @@ export interface Playlist {
       is_local: boolean;
       primary_color: string | null;
       track: {
-        album: NewAlbums;
+        album: Albums;
         artists: {
           href: string;
           id: string;
@@ -55,7 +55,7 @@ export interface Playlist {
 }
 
 export interface Track {
-  album: NewAlbums;
+  album: Albums;
   artists: {
     href: string;
     id: string;
@@ -77,7 +77,7 @@ export interface Track {
   disx_number: number;
 }
 
-export interface NewAlbums {
+export interface Albums {
   album_type: string;
   artists: {
     external_urls: {
@@ -131,6 +131,42 @@ export interface Artis {
   popularity: number;
   type: string;
   uri: string;
+}
+
+export interface SearchResult {
+  albums: {
+    items: Albums[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number;
+  };
+  artists: {
+    items: Artis[];
+  };
+  playlists: {
+    items: Playlists[];
+  };
+  tracks: {
+    items: Track[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number;
+  };
+  [key: string]:
+    | {
+        items: any[]; // Adjust the type accordingly
+        limit: number;
+        next: string | null;
+        offset: number;
+        previous: string | null;
+        total: number;
+      }
+    | { items: Artis[] }
+    | { items: Playlists[] };
 }
 
 export interface CategoryList {
