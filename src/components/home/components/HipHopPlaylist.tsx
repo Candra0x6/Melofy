@@ -37,7 +37,7 @@ function HipHopPlaylist() {
           {hipHopPlaylist.length > 0 &&
             hipHopPlaylist.map((val, key) => (
               <Link
-                to={`/playlists/${
+                to={`/${val.type}/${
                   val.id
                 }?playlist-name=${val.name.toLowerCase()}`}
                 key={key}
