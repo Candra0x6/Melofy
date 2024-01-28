@@ -39,7 +39,7 @@ export default function NewReleases() {
         <Grid row="auto" gap={4} display="flex" w="full">
           {newAlbums.length > 0 &&
             newAlbums.map((val, key) => (
-              <Link to={`/album/${val.id}`} key={key}>
+              <Link to={`/${val.type}/${val.id}`} key={key}>
                 <Box
                   key={key}
                   display="flex"

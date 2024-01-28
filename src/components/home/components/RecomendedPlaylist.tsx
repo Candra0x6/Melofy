@@ -36,7 +36,7 @@ function RecomendedPlaylist() {
             recommendedPlaylistData.map((val, key) => (
               <Link
                 key={key}
-                to={`/playlists/${
+                to={`/playlist/${
                   val.id
                 }?playlist-name=${val.name.toLowerCase()}`}
               >

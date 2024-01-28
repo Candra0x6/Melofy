@@ -2,6 +2,7 @@ import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import UsePopularArtist from "../../../hooks/UsePopularArtist";
+import { Link, redirect } from "react-router-dom";
 function PopularArtists() {
   const { artist } = UsePopularArtist();
   return (
@@ -22,46 +23,49 @@ function PopularArtists() {
         flexDirection="column"
         alignItems="center"
         rowGap={3}
-        className=""
+        className=" w-full"
         h="full"
       >
         {artist.length > 0 &&
           artist.map((artist, key) => (
-            <Box
+            <Link
               key={key}
-              display="flex"
-              alignItems="center"
-              h="70px"
-              w="full"
-              maxH="200px"
-              maxW="full"
+              to={`/${artist.type}/${artist.id}`}
+              className="w-full"
             >
-              <Box w="full" h="full" display="flex" columnGap={3}>
-                <Image
-                  src={artist.images[0].url}
-                  h="full"
-                  w="70px"
-                  rounded="1.2rem "
-                />
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  justifyContent="center"
-                >
-                  <Text fontWeight="semibold" fontSize="14px">
-                    {artist.name}
-                  </Text>
-                  <Text fontWeight="medium" textColor="#5C5C5C" fontSize="10px">
-                    {artist.type.charAt(0).toUpperCase() + artist.type.slice(1)}
-                  </Text>
+              <div className="flex w-full">
+                <Box w="full" h="full" display="flex" columnGap={3}>
+                  <Image
+                    src={artist.images[0].url}
+                    h="70px"
+                    w="70px"
+                    rounded="1.2rem "
+                  />
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                  >
+                    <Text fontWeight="semibold" fontSize="14px">
+                      {artist.name}
+                    </Text>
+                    <Text
+                      fontWeight="medium"
+                      textColor="#5C5C5C"
+                      fontSize="10px"
+                    >
+                      {artist.type.charAt(0).toUpperCase() +
+                        artist.type.slice(1)}
+                    </Text>
+                  </Box>
                 </Box>
-              </Box>
-              <IconButton
-                bgColor="transparent"
-                aria-label="MoreDots"
-                icon={<MoreHorizIcon />}
-              />
-            </Box>
+                <IconButton
+                  bgColor="transparent"
+                  aria-label="MoreDots"
+                  icon={<MoreHorizIcon />}
+                />
+              </div>
+            </Link>
           ))}
       </Flex>
     </Flex>
