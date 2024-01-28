@@ -74,7 +74,7 @@ export interface Track {
   duration_ms: number;
   explicit: boolean;
   is_local: boolean;
-  disx_number: number;
+  disc_number: number;
 }
 
 export interface Albums {
@@ -184,6 +184,7 @@ export interface CategoryList {
 export interface ArrowSlide {
   onClick: () => void;
 }
+
 export interface AxiosErrorResponse {
   response?: {
     data?: {
