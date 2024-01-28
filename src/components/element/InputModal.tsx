@@ -8,7 +8,7 @@ function InputModal({
   visibleModalSearch,
   setVisibleModalSearch,
 }: isModalActive) {
-  const { searchResult, valueFilter } = searchHandle();
+  const { searchResult, valueFilter, searchQuery } = searchHandle();
   const closeModal = (inner: React.MouseEvent) => {
     const innerId = inner.target as HTMLElement;
     if (innerId.id === "modalSearch") {
@@ -17,7 +17,6 @@ function InputModal({
     }
   };
 
-  console.log(searchResult);
   return (
     <div
       id="modalSearch"
@@ -31,9 +30,10 @@ function InputModal({
       <div className="flex flex-col items-center justify-center gap-y-2">
         <div className="flex w-[310px] h-[30px]  justify-between border-2 border-[#1C1818] bg-[#E9FAFF] items-center text-black text-sm  rounded-full p-2 ">
           <SearchIcon />
+
           <input
             type="text"
-            className="w-full bg-transparent focus:border-white active:border-0 focus:border-0"
+            className="w-full bg-transparent ml-2 focus:outline-none"
             onChange={(e) => valueFilter(e.target.value)}
           />
           <IconButton
@@ -51,7 +51,7 @@ function InputModal({
               </h1>
               {searchResult &&
                 searchResult.tracks &&
-                searchResult.tracks.items.map((track, trackID) => (
+                searchResult.tracks.items.slice(0, 5).map((track, trackID) => (
                   <Link
                     key={trackID}
                     to={`track/${track.id}`}
@@ -71,10 +71,10 @@ function InputModal({
               </h1>
               {searchResult &&
                 searchResult.artists &&
-                searchResult.artists.items.map((artis, artisID) => (
+                searchResult.artists.items.slice(0, 5).map((artis, artisID) => (
                   <Link
                     key={artisID}
-                    to={`/artists/${artis.id}`}
+                    to={`/artist/${artis.id}`}
                     onClick={() => setVisibleModalSearch(false)}
                   >
                     <h1 className="p-3 rounded-xl text-[#346473] hover:bg-[#C8E6EF] text-[14px]">
@@ -86,14 +86,14 @@ function InputModal({
           )}
           <div className={`flex flex-col p-4 `}>
             <h1 className={`text-[#346473] font-semibold text-[16px] pt-2 `}>
-              Albums
+              {searchResult?.albums && "Albums"}{" "}
             </h1>
             {searchResult &&
               searchResult.albums &&
-              searchResult.albums.items.map((album, albumID) => (
+              searchResult.albums.items.slice(0, 5).map((album, albumID) => (
                 <Link
                   key={albumID}
-                  to={`album ${album.id}`}
+                  to={`album/${album.id}`}
                   onClick={() => setVisibleModalSearch(false)}
                 >
                   <h1 className="p-3 rounded-xl text-[#346473] hover:bg-[#C8E6EF] text-[14px]">
@@ -104,25 +104,32 @@ function InputModal({
           </div>
           <div className={`flex flex-col p-4 `}>
             <h1 className={`text-[#346473] font-semibold text-[16px] pt-2 `}>
-              Playlists
+              {searchResult?.playlists && "Playlists"}
             </h1>
             {searchResult &&
               searchResult.playlists &&
-              searchResult.playlists.items.map((playlist, playlistID) => (
-                <Link
-                  key={playlistID}
-                  to={`playlists/${playlist.id}`}
-                  onClick={() => setVisibleModalSearch(false)}
-                >
-                  <h1 className="p-3 rounded-xl text-[#346473] hover:bg-[#C8E6EF] text-[14px]">
-                    {playlist && playlist.name} -{" "}
-                    {playlist && playlist.owner.display_name}
-                  </h1>
-                </Link>
-              ))}
-            <h1 className="text-[#346473] font-medium text-[12px] text-center py-2 pr-4 hover:bg-[#C8E6EF] rounded-full">
-              See All Results
-            </h1>
+              searchResult.playlists.items
+                .slice(0, 5)
+                .map((playlist, playlistID) => (
+                  <Link
+                    key={playlistID}
+                    to={`playlist/${playlist.id}`}
+                    onClick={() => setVisibleModalSearch(false)}
+                  >
+                    <h1 className="p-3 rounded-xl text-[#346473] hover:bg-[#C8E6EF] text-[14px]">
+                      {playlist && playlist.name} -{" "}
+                      {playlist && playlist.owner.display_name}
+                    </h1>
+                  </Link>
+                ))}
+            <Link
+              to={`/search?query=${searchQuery}`}
+              onClick={() => setVisibleModalSearch(false)}
+            >
+              <h1 className="text-[#346473] font-medium text-[12px] text-center py-2 pr-4 hover:bg-[#C8E6EF] rounded-full">
+                {searchResult && "See All Results"}{" "}
+              </h1>
+            </Link>
           </div>
         </div>
       </div>
