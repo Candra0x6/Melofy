@@ -3,7 +3,7 @@ import UseArtistTopTracks from "../../../hooks/UseArtistTopTracks";
 import UseDetailsArtist from "../../../hooks/UseDetailsArtist";
 import UseTruncateText from "../../../hooks/UseTruncateText";
 import { IconButton } from "@chakra-ui/react";
-import { MoreVert } from "@mui/icons-material";
+import { MoreVert, West } from "@mui/icons-material";
 import UseArtistAlbums from "../../../hooks/UseArtistAlbums";
 import UseReleatedArtists from "../../../hooks/UseReleatedArtists";
 
@@ -17,6 +17,18 @@ function ArtistDetails() {
     <div className="flex flex-col items-center bg-[#F7FCFE] overflow-hidden">
       <div className="container">
         <div className="flex flex-col h-[300px] w-full relative">
+          <div className="flex w-full justify-start ml-2 ">
+            <IconButton
+              position="absolute"
+              top="2"
+              onClick={() => window.history.back()}
+              aria-label="Backk"
+              bgColor="#F7FCFE"
+              zIndex="10"
+              rounded="full"
+              icon={<West sx={{ fontSize: 28 }} />}
+            />
+          </div>
           <div className="flex flex-col absolute h-full w-full justify-center items-center">
             <h1 className="text-gray-100 font-poppins font-semibold text-2xl w-full z-20 text-center">
               {artistDetail && artistDetail?.name}
@@ -132,7 +144,7 @@ function ArtistDetails() {
                   <Link className="z-10" to={`/album/${album.id}`} key={id}>
                     <div className="flex flex-col justify-between z-10 items-center w-full">
                       <div className="flex flex-col items-center">
-                        <div className="h-[130px] w-[130px] relative aspect-square flex justify-center items-center">
+                        <div className="h-[100px] w-[100px] relative aspect-square flex justify-center items-center">
                           <img
                             src={
                               album &&

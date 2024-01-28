@@ -1,10 +1,10 @@
 import axios from "axios";
-import { NewAlbums } from ".";
 import { useState } from "react";
+import { Albums } from ".";
 
 function UseNewAlbums() {
   const getAT = localStorage.getItem("access_token");
-  const [newAlbums, setNewAlbums] = useState<NewAlbums[]>([]);
+  const [newAlbums, setNewAlbums] = useState<Albums[]>([]);
   const getNewReleaseAlbum = async () => {
     try {
       const fetch = await axios.get(
