@@ -82,12 +82,11 @@ function PlaylistDetail() {
                     </div>
                     <div className="tracking-wider">
                       <h1 className="font-semibold text-[15px] text-black">
-                        {truncateText(track.track && track.track.name, 4)}
+                        {truncateText(track.track && track.track.name)}
                       </h1>
                       <h2 className="font-medium text-[#838383] text-[12px]">
                         {truncateText(
-                          track.track && track.track.artists[0]?.name,
-                          3
+                          track.track && track.track.artists[0]?.name
                         )}
                       </h2>
                     </div>

@@ -41,7 +41,7 @@ function AlbumDetail() {
                 alt="album"
                 className="w-full h-full rounded-full"
               />
-              <div className="w-[15px] h-[15px] rounded-full bg-white absolute"></div>
+              <div className="w-[20px] h-[20px] rounded-full bg-white absolute"></div>
             </div>
             <div className="flex flex-col ml-2 w-full justify-between h-full">
               <div className="judul flex flex-col">

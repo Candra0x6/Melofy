@@ -1,10 +1,10 @@
-import UseCategoryPlaylist from "../../../hooks/UseCategoryPlaylist";
 import { Box, Flex, Heading, Image, SimpleGrid } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import UseCategory from "../../../hooks/UseCategory";
 
 function CategoryPlaylist() {
-  const { categoryPlaylist } = UseCategoryPlaylist();
+  const { category } = UseCategory();
 
   return (
     <Flex display="inline-block">
@@ -28,12 +28,11 @@ function CategoryPlaylist() {
           maxW="400vh"
           spacingX={4}
         >
-          {categoryPlaylist.length > 0 &&
-            categoryPlaylist.map((val, key) => (
+          {category &&
+            category.length > 0 &&
+            category.map((val, key) => (
               <Link
-                to={`/playlists/${
-                  val.id
-                }?playlist-name=${val.name.toLowerCase()}`}
+                to={`/category/${val.id}?category=${val.name.toLowerCase()}`}
                 key={key}
               >
                 <Box

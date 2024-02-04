@@ -5,10 +5,12 @@ import MusicIcon from "../../assets/Icon/MusicIcon.svg";
 import scrollHandle from "./type/scrollHandle";
 import { useState } from "react";
 import InputModal from "./InputModal";
+import Sidebar from "./Sidebar";
+import { Link } from "react-router-dom";
 function Header() {
   const { visibleNav } = scrollHandle();
   const [visibleModalInput, setVisibleModalInput] = useState<boolean>(false);
-
+  const [visibleSideBar, setVisibleSideBar] = useState<boolean>(false);
   return (
     <>
       <header
@@ -19,7 +21,10 @@ function Header() {
         <div className="container mx-2 backdrop-blur-lg brightness-125 p-3 border-[1px] border-gray-600 rounded-full w-[95%]">
           <div className="flex">
             <nav className="flex justify-between items-center w-full">
-              <div className="">
+              <div
+                className="cursor-pointer"
+                onClick={() => setVisibleSideBar(true)}
+              >
                 <Image src={HamburgerMenu} />
               </div>
               <button
@@ -32,14 +37,19 @@ function Header() {
 
                 <Image src={MusicIcon} className="z-10 absolute mr-5" />
               </button>
-
-              <div className="">
-                <Image src={UserIcon} />
-              </div>
+              <Link to={`/user/profile`}>
+                <div className=" cursor-pointer">
+                  <Image src={UserIcon} />
+                </div>
+              </Link>
             </nav>
           </div>
         </div>
       </header>
+      <Sidebar
+        visibleSideBar={visibleSideBar}
+        setVisibleSideBar={setVisibleSideBar}
+      />
       <InputModal
         visibleModalSearch={visibleModalInput}
         setVisibleModalSearch={setVisibleModalInput}

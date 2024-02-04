@@ -7,11 +7,9 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect } from "react";
 import UseNewAlbums from "../../../hooks/UseNewAlbums";
 import { ArrowForwardIos } from "@mui/icons-material";
-import axios from "axios";
 import { Link } from "react-router-dom";
 export default function NewReleases() {
   const { getNewReleaseAlbum, newAlbums, getPlaylistByCategory } =

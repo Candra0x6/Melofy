@@ -3,9 +3,11 @@ import UseArtistTopTracks from "../../../hooks/UseArtistTopTracks";
 import UseDetailsArtist from "../../../hooks/UseDetailsArtist";
 import UseTruncateText from "../../../hooks/UseTruncateText";
 import { IconButton } from "@chakra-ui/react";
-import { MoreVert, West } from "@mui/icons-material";
+import { West } from "@mui/icons-material";
 import UseArtistAlbums from "../../../hooks/UseArtistAlbums";
 import UseReleatedArtists from "../../../hooks/UseReleatedArtists";
+import CardTrack from "../../../components/CardTrack";
+import CardArtist from "../../../components/CardArtist";
 
 function ArtistDetails() {
   const { artistDetail } = UseDetailsArtist();
@@ -91,51 +93,7 @@ function ArtistDetails() {
               </h1>
             </div>
           </div>
-          <div className="flex flex-col">
-            <h1 className="font-bold text-xl">Popular Track</h1>
-            <div className="flex flex-col gap-y-3 mt-5">
-              {artistTopTrack &&
-                artistTopTrack.map((track, id: number) => (
-                  <Link className="z-10" to={`/track/${track.id}`} key={id}>
-                    <div className="flex justify-between z-10 items-center w-full">
-                      <div className="flex gap-x-3 items-center">
-                        <div className="flex">
-                          <div className="h-[60px] w-[60px] aspect-square">
-                            <img
-                              src={
-                                track.album &&
-                                track.album.images &&
-                                track.album.images[0] &&
-                                track.album.images[0].url
-                              }
-                              className={`w-full h-full rounded-2xl
-                                }`}
-                              alt={`Track${id}`}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="tracking-wider overflow-hidden">
-                          <div className="flex">
-                            <h1 className="font-semibold text-[14px] text-black">
-                              {truncateText(track && track.name, 4) || "Title"}
-                            </h1>
-                          </div>
-                          <h2 className="font-medium text-[#838383] text-[10px]">
-                            {track && track.artists && track.artists[0].name}
-                          </h2>
-                        </div>
-                      </div>
-                      <IconButton
-                        aria-label="more icon"
-                        bg="transparent"
-                        icon={<MoreVert sx={{ fontSize: "24px" }} />}
-                      />
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
+          <CardTrack data={artistTopTrack} title={"Popular Track"} />
           <div className="flex flex-col">
             <h1 className="font-bold text-xl">Albums</h1>
             <div className="flex gap-x-3 mt-5 overflow-x-auto">
@@ -162,7 +120,7 @@ function ArtistDetails() {
                       <div className="albuming-wider text-center overflow-hidden">
                         <div className="flex">
                           <h1 className="font-semibold text-[14px] text-black">
-                            {truncateText(album && album.name, 4) || "Title"}
+                            {truncateText(album && album.name) || "Title"}
                           </h1>
                         </div>
                         <h2 className="font-medium text-[#838383] text-[10px]">
@@ -174,48 +132,7 @@ function ArtistDetails() {
                 ))}
             </div>
           </div>
-          <div className="flex flex-col">
-            <h1 className="font-bold text-xl">Releated Artists</h1>
-            <div className="flex gap-x-3 mt-5 overflow-x-auto">
-              {releatedArtists &&
-                releatedArtists.map((artist, id: number) => (
-                  <Link
-                    onClick={window.location.reload}
-                    className="z-10"
-                    to={`/artist/${artist.id}`}
-                    key={id}
-                  >
-                    <div className="flex flex-col justify-between z-10 items-center w-full">
-                      <div className="flex flex-col items-center">
-                        <div className="h-[90px] w-[90px] relative aspect-square flex justify-center items-center">
-                          <img
-                            src={
-                              artist &&
-                              artist.images &&
-                              artist.images[0] &&
-                              artist.images[0].url
-                            }
-                            className={`w-full h-full rounded-full
-                                }`}
-                            alt={`artist${id}`}
-                          />
-                        </div>
-                      </div>
-                      <div className="artisting-wider text-center overflow-hidden">
-                        <div className="flex">
-                          <h1 className="font-semibold text-[14px] text-black">
-                            {truncateText(artist && artist.name, 4) || "Title"}
-                          </h1>
-                        </div>
-                        <h2 className="font-medium text-[#838383] text-[10px] first-letter:uppercase">
-                          {artist && artist.type}
-                        </h2>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
+          <CardArtist data={releatedArtists} title={"Releated Artists"} />
         </div>
       </div>
     </div>

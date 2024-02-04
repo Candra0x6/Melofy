@@ -2,7 +2,7 @@ import { Box, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { ArrowForwardIos } from "@mui/icons-material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import UsePopularArtist from "../../../hooks/UsePopularArtist";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 function PopularArtists() {
   const { artist } = UsePopularArtist();
   return (
