@@ -1,9 +1,11 @@
 function UseTruncateText() {
-  const truncateText = (text: string, maxWords: number) => {
+  const truncateText = (text: string) => {
+    const maxWords = 30;
     if (text) {
-      const words = text.split(" ");
-      if (words.length > maxWords) {
-        return words.slice(0, maxWords).join(" ") + "...";
+      {
+        if (text.length > maxWords) {
+          return text.slice(0, maxWords) + "...";
+        } else return text;
       }
       return text;
     }
