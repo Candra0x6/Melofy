@@ -11,6 +11,19 @@ function Signup() {
     "user-read-playback-state",
     "user-modify-playback-state",
     "user-read-currently-playing",
+    "user-read-email",
+    "user-read-private",
+    "user-library-modify",
+    "user-library-read",
+    "user-read-playback-position",
+    "user-top-read",
+    "user-read-recently-played",
+    "user-follow-modify",
+    "user-follow-read",
+    "playlist-read-private",
+    "playlist-read-collaborative",
+    "playlist-modify-private",
+    "playlist-modify-public",
   ];
 
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(
