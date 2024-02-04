@@ -117,7 +117,7 @@ export interface Artis {
     href: null | string;
     total: number;
   };
-  genres: ["pop"];
+  genres: [];
   href: string;
   id: string;
   images: [
@@ -180,6 +180,46 @@ export interface CategoryList {
   ];
   id: string;
   name: string;
+}
+
+export interface User {
+  country: string;
+  display_name: string;
+  email: string;
+  explicit_content: {
+    filter_enabled: false;
+    filter_locked: false;
+  };
+  external_urls: {
+    spotify: string;
+  };
+  followers: {
+    href: string;
+    total: 0;
+  };
+  href: string;
+  id: string;
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
+  product: string;
+  type: string;
+  uri: string;
+}
+
+export interface Category {
+  message: string;
+  playlists: {
+    href: string;
+    items: Playlists[];
+    limit: number;
+    next: string | null;
+    offset: number;
+    previous: string | null;
+    total: number | null;
+  };
 }
 export interface ArrowSlide {
   onClick: () => void;
