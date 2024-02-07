@@ -5,9 +5,10 @@ import { IconButton } from "@chakra-ui/react";
 import { MoreVert } from "@mui/icons-material";
 
 interface CardValue {
-  data: Track[];
-  title: string;
+  data: Track[] | undefined;
+  title: string | undefined;
 }
+
 function CardTrack({ data, title }: CardValue) {
   const { truncateText } = UseTruncateText();
   return (
@@ -28,7 +29,7 @@ function CardTrack({ data, title }: CardValue) {
                           track.album.images[0] &&
                           track.album.images[0].url
                         }
-                        className={`w-full h-full rounded-2xl
+                        className={`w-full h-full rounded-md
                                 }`}
                         alt={`Track${id}`}
                       />
