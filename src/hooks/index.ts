@@ -27,27 +27,7 @@ export interface Playlists {
     href: string;
     total: number;
     items: {
-      added_at: string;
-      is_local: boolean;
-      primary_color: string | null;
-      track: {
-        album: Albums;
-        artists: {
-          href: string;
-          id: string;
-          name: string;
-          type: string;
-          uri: string;
-        }[];
-        id: string | null;
-        name: string;
-        popularity: number;
-        preview_url: string;
-        track: boolean;
-        track_number: number;
-        type: string;
-        uri: string;
-      };
+      track: Track;
     }[];
   };
   type: string;
@@ -76,6 +56,8 @@ export interface Track {
   is_local: boolean;
   disc_number: number;
 }
+
+// Assuming you have a variable with the problematic type
 
 export interface Albums {
   album_type: string;
