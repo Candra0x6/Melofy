@@ -22,7 +22,6 @@ function UseArtistTopTracks() {
       );
 
       setArtistTopTrack(fetch.data.tracks);
-      console.log(fetch.data);
     } catch (error) {
       console.error(error);
     }

@@ -22,7 +22,6 @@ function UseArtistAlbums() {
       );
 
       setArtistAlbums(fetch.data.items);
-      console.log(fetch.data);
     } catch (error) {
       console.error(error);
     }

@@ -20,7 +20,6 @@ function UseDetailsArtist() {
       );
 
       setArtistDetail(fetch.data);
-      console.log(fetch.data);
     } catch (error) {
       console.error(error);
     }

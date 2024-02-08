@@ -22,7 +22,6 @@ function UseReleatedArtists() {
       );
 
       setReleatedArtists(fetch.data.artists);
-      console.log(fetch.data);
     } catch (error) {
       console.error(error);
     }
