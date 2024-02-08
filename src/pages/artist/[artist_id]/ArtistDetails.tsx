@@ -8,6 +8,7 @@ import UseArtistAlbums from "../../../hooks/UseArtistAlbums";
 import UseReleatedArtists from "../../../hooks/UseReleatedArtists";
 import CardTrack from "../../../components/CardTrack";
 import CardArtist from "../../../components/CardArtist";
+import { UseFollowArtist } from "../../../hooks/UseUserFollowArtist";
 
 function ArtistDetails() {
   const { artistDetail } = UseDetailsArtist();
@@ -15,6 +16,9 @@ function ArtistDetails() {
   const { truncateText } = UseTruncateText();
   const { artistAlbums } = UseArtistAlbums();
   const { releatedArtists } = UseReleatedArtists();
+  const { putFollowArtist, isFollow, getIsFollowArtist, unfollowArtist } =
+    UseFollowArtist();
+  console.log(isFollow);
   return (
     <div className="flex flex-col items-center bg-[#F7FCFE] overflow-hidden">
       <div className="container">
@@ -92,6 +96,21 @@ function ArtistDetails() {
                 Profession
               </h1>
             </div>
+          </div>
+          <div className="flex w-full justify-center">
+            <button
+              type="button"
+              className="bg-[#B1DEEC] rounded-lg px-5 py-1 font-semibold"
+              onClick={async () => {
+                isFollow === false && (await putFollowArtist());
+                isFollow === true && (await unfollowArtist());
+                getIsFollowArtist();
+              }}
+            >
+              <span className="">
+                {isFollow === true ? "Following" : "Follow"}
+              </span>
+            </button>
           </div>
           <CardTrack data={artistTopTrack} title={"Popular Track"} />
           <div className="flex flex-col">
