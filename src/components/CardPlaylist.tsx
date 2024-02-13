@@ -1,22 +1,20 @@
 import { IconButton } from "@chakra-ui/react";
-import { Category } from "../hooks";
+import { Category, Playlists } from "../hooks";
 import UseTruncateText from "../hooks/UseTruncateText";
 import { MoreVert } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 interface PlaylistComponent {
   title: string | undefined;
-  data: Category | undefined;
+  data: Playlists[] | undefined;
 }
 function CardPlaylist({ title, data }: PlaylistComponent) {
   const { truncateText } = UseTruncateText();
   return (
-    <div className="flex flex-col gap-y-5 mx-2 -mt-10">
-      <h1>{title}</h1>
+    <div className="flex flex-col gap-y-5 mx-2">
+      <h1 className="font-bold text-xl">{title}</h1>
       {data &&
-        data.playlists &&
-        data.playlists.items &&
-        data.playlists.items.map((track, id) => (
+        data.map((track, id) => (
           <Link className="z-10" to={`/${track.type}/${track.id}`} key={id}>
             <div className="flex justify-between z-10 items-center w-full">
               <div className="flex gap-x-3 items-center">
