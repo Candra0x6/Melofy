@@ -12,24 +12,28 @@ function DiscoverCardPlaylist({ data, title }: PropsData) {
   const { truncateText } = UseTruncateText();
   return (
     <Flex display="inline-block" w="full">
-      <Flex justifyContent="space-between" alignItems="center" pb="10px">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        pb="10px"
+        px="8px"
+      >
         <h1 className="font-medium font-krona text-[12px] text-center">
           <span className=" before:absolute before:inset-2 before:left-0 before:w-full before:h-1/2 before:bg-[#B1DEEC] relative inline-block">
             <span className="relative text-black ">{title}</span>
           </span>
         </h1>
-
         <button className="text-[10px] text-[#838383] flex items-center">
           See All
           <ArrowForwardIos sx={{ fontSize: "10px" }} />
         </button>
       </Flex>
-      <Flex className="overflow-x-auto no-scrollbar">
+      <Flex className="overflow-x-auto no-scrollbar pl-2    ">
         <Grid row="auto" gap={4} display="flex" w="full">
           {data.length > 0 &&
             data.map((val, key) => (
               <Link
-                to={`/${val.type}/${
+                to={`/${val.type || "playlist"}/${
                   val.id
                 }?playlist-name=${val.name.toLowerCase()}`}
                 key={key}
@@ -50,9 +54,9 @@ function DiscoverCardPlaylist({ data, title }: PropsData) {
                     {val.name}
                   </Heading>
                   <span className="text-[10px] w-full">
-                    {truncateText((val as Playlists).description) ||
+                    {truncateText((val as Playlists).description, 40) ||
                       ((val as Albums).artists &&
-                        (val as Albums).artists.map((artist, id) => (
+                        (val as Albums).artists.map((artist, id: number) => (
                           <span key={id}>{artist.name} </span>
                         )))}
                   </span>
