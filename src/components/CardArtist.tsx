@@ -39,7 +39,7 @@ function CardArtist({ data, title }: CardArtistComponent) {
                 <div className="artisting-wider text-center overflow-hidden">
                   <div className="flex">
                     <h1 className="font-semibold text-[14px] text-black">
-                      {truncateText(artist && artist.name) || "Title"}
+                      {truncateText(artist && artist.name, 30) || "Artist Name"}
                     </h1>
                   </div>
                   <h2 className="font-medium text-[#838383] text-[10px] first-letter:uppercase">
