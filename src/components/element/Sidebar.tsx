@@ -33,9 +33,9 @@ function Sidebar({ visibleSideBar, setVisibleSideBar }: isSideBarActive) {
     }
   };
   return (
-    <div
+    <aside
       id="sidebar"
-      className={`w-full h-full fixed inset-0 z-40 transition-all duration-500 ease-in-out ${
+      className={`w-full h-full fixed inset-0 z-40 transition-all duration-500 ease-in-out lg:hidden ${
         visibleSideBar === true
           ? "flex flex-col translate-x-0"
           : "-translate-x-[100%]"
@@ -94,7 +94,7 @@ function Sidebar({ visibleSideBar, setVisibleSideBar }: isSideBarActive) {
           </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }
 
