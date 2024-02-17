@@ -3,9 +3,8 @@ import { West } from "@mui/icons-material";
 
 function ButtonBack() {
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-start p-2 absolute">
       <IconButton
-        top="2"
         position="absolute"
         onClick={() => window.history.back()}
         aria-label="Backk"
