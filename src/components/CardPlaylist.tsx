@@ -27,10 +27,10 @@ function CardPlaylist({ title, data }: PlaylistComponent) {
                 </div>
                 <div className="tracking-wider">
                   <h1 className="font-semibold text-[15px] text-black">
-                    {truncateText(track.name)}
+                    {truncateText(track.name, 20)}
                   </h1>
                   <h2 className="font-medium text-[#838383] text-[12px]">
-                    {truncateText(track.description || "Description")}
+                    {truncateText(track.description, 40 || "Description")}
                   </h2>
                 </div>
               </div>
