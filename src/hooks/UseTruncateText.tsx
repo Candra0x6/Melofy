@@ -1,10 +1,9 @@
 function UseTruncateText() {
-  const truncateText = (text: string) => {
-    const maxWords = 30;
+  const truncateText = (text: string, varchar: number) => {
     if (text) {
       {
-        if (text.length > maxWords) {
-          return text.slice(0, maxWords) + "...";
+        if (text.length > varchar) {
+          return text.slice(0, varchar) + "...";
         } else return text;
       }
       return text;
