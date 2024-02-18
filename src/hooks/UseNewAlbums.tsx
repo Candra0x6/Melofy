@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { Albums } from ".";
+import LocalStorageHandle from "./LocalStorageHandle";
 
 function UseNewAlbums() {
-  const getAT = localStorage.getItem("access_token");
+  const { getAccessToken } = LocalStorageHandle();
   const [newAlbums, setNewAlbums] = useState<Albums[]>([]);
   const getNewReleaseAlbum = async () => {
     try {
@@ -13,7 +14,7 @@ function UseNewAlbums() {
         }/browse/new-releases?limit=10`,
         {
           headers: {
-            Authorization: `Bearer ${getAT}`,
+            Authorization: `Bearer ${getAccessToken}`,
           },
         }
       );
@@ -29,7 +30,7 @@ function UseNewAlbums() {
         `${import.meta.env.VITE_REACT_APP_BASE_URL}/me`,
         {
           headers: {
-            Authorization: `Bearer ${getAT}`,
+            Authorization: `Bearer ${getAccessToken}`,
           },
         }
       );

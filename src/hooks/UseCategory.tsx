@@ -49,7 +49,6 @@ export function UseCategoryPlaylist() {
       );
 
       setCategoryPlaylist(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

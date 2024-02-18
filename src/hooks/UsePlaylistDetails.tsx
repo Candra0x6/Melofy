@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Playlists } from ".";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -24,10 +24,11 @@ function UsePlaylistDetails() {
       console.log(err);
     }
   };
-
+  useEffect(() => {
+    getPlaylistDetails();
+  }, []);
   return {
     playlistDetail,
-    getPlaylistDetails,
   };
 }
 
