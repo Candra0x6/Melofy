@@ -1,6 +1,6 @@
-import ButtonBack from "../../../components/ButtonBack";
 import CardArtist from "../../../components/CardArtist";
 import CardTrack from "../../../components/CardTrack";
+import UserPageTitle from "../../../components/UserPageTitle";
 import UseUserProfile from "../../../hooks/UseUserProfile";
 import {
   UseUserTopArtist,
@@ -15,12 +15,7 @@ function UserProfile() {
     <div className="flex flex-col">
       <div className="container">
         <div className="flex flex-col mx-2">
-          <div className="flex w-full items-center mt-4">
-            <ButtonBack />
-            <div className="text-center w-full font-semibold tracking-widest">
-              <h1 className="text-center">Profile</h1>
-            </div>
-          </div>
+          <UserPageTitle title="Profile" />
           <div className="flex flex-col mt-6 items-center gap-y-1">
             <div className="rounded-full w-[110px] h-[110px]">
               <img
