@@ -1,19 +1,16 @@
-import { Link } from "react-router-dom";
 import UseArtistTopTracks from "../../../hooks/UseArtistTopTracks";
 import UseDetailsArtist from "../../../hooks/UseDetailsArtist";
-import UseTruncateText from "../../../hooks/UseTruncateText";
-import { IconButton } from "@chakra-ui/react";
-import { West } from "@mui/icons-material";
 import UseArtistAlbums from "../../../hooks/UseArtistAlbums";
 import UseReleatedArtists from "../../../hooks/UseReleatedArtists";
 import CardTrack from "../../../components/CardTrack";
 import CardArtist from "../../../components/CardArtist";
 import { UseFollowArtist } from "../../../hooks/UseUserFollowArtist";
+import CardAlbums from "../../../components/CardAlbums";
+import ButtonBack from "../../../components/ButtonBack";
 
 function ArtistDetails() {
   const { artistDetail } = UseDetailsArtist();
   const { artistTopTrack } = UseArtistTopTracks();
-  const { truncateText } = UseTruncateText();
   const { artistAlbums } = UseArtistAlbums();
   const { releatedArtists } = UseReleatedArtists();
   const { putFollowArtist, isFollow, getIsFollowArtist, unfollowArtist } =
@@ -23,17 +20,8 @@ function ArtistDetails() {
     <div className="flex flex-col items-center bg-[#F7FCFE] overflow-hidden">
       <div className="container">
         <div className="flex flex-col h-[300px] w-full relative">
-          <div className="flex w-full justify-start ml-2 ">
-            <IconButton
-              position="absolute"
-              top="2"
-              onClick={() => window.history.back()}
-              aria-label="Backk"
-              bgColor="#F7FCFE"
-              zIndex="10"
-              rounded="full"
-              icon={<West sx={{ fontSize: 28 }} />}
-            />
+          <div className="flex w-full ">
+            <ButtonBack />
           </div>
           <div className="flex flex-col absolute h-full w-full justify-center items-center">
             <h1 className="text-gray-100 font-poppins font-semibold text-2xl w-full z-20 text-center">
@@ -113,44 +101,7 @@ function ArtistDetails() {
             </button>
           </div>
           <CardTrack data={artistTopTrack} title={"Popular Track"} />
-          <div className="flex flex-col">
-            <h1 className="font-bold text-xl">Albums</h1>
-            <div className="flex gap-x-3 mt-5 overflow-x-auto">
-              {artistAlbums &&
-                artistAlbums.map((album, id: number) => (
-                  <Link className="z-10" to={`/album/${album.id}`} key={id}>
-                    <div className="flex flex-col justify-between z-10 items-center w-full">
-                      <div className="flex flex-col items-center">
-                        <div className="h-[100px] w-[100px] relative aspect-square flex justify-center items-center">
-                          <img
-                            src={
-                              album &&
-                              album.images &&
-                              album.images[0] &&
-                              album.images[0].url
-                            }
-                            className={`w-full h-full rounded-full
-                                }`}
-                            alt={`album${id}`}
-                          />
-                          <div className="absolute w-[20px] h-[20px] bg-[#F7FCFE] rounded-full"></div>
-                        </div>
-                      </div>
-                      <div className="albuming-wider text-center overflow-hidden">
-                        <div className="flex">
-                          <h1 className="font-semibold text-[14px] text-black">
-                            {truncateText(album && album.name) || "Title"}
-                          </h1>
-                        </div>
-                        <h2 className="font-medium text-[#838383] text-[10px]">
-                          {album && album.artists && album.artists[0].name}
-                        </h2>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
+          <CardAlbums data={artistAlbums} title="Albums" />
           <CardArtist data={releatedArtists} title={"Releated Artists"} />
         </div>
       </div>
