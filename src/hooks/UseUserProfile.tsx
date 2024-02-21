@@ -19,6 +19,7 @@ function UseUserProfile() {
       );
       const userProfile = fetch.data;
       setUserProfile(userProfile);
+      localStorage.setItem("user_id", userProfile.id);
     } catch (e) {
       console.error(e);
     }
