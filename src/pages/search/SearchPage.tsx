@@ -145,7 +145,7 @@ function SearchPage() {
                       <div className="tracking-wider overflow-hidden">
                         <div className="flex">
                           <h1 className="font-semibold text-[15px] text-black">
-                            {truncateText(track && track.name, 4) || "Title"}
+                            {truncateText(track && track.name) || "Title"}
                           </h1>
                           {searchResult.artists &&
                           track.followers.total >= 100000 ? (
@@ -166,7 +166,7 @@ function SearchPage() {
                               track.artists[2] &&
                               track.artists[2].name) ||
                             (track.description &&
-                              truncateText(track.description, 5)) ||
+                              truncateText(track.description)) ||
                             (track.followers &&
                               track.followers.total &&
                               "Followers  " + track.followers.total) ||
