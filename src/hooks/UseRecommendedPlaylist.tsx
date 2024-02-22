@@ -1,20 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-interface RecomendedPlaylistState {
-  id: string;
-  description: string;
-  images: {
-    url: string;
-  }[];
-  name: string;
-}
+import { Playlists } from ".";
 
 function UseRecommendedPlaylist() {
   const getAT = localStorage.getItem("access_token");
 
   const [recommendedPlaylistData, setRecommendedPlaylistData] = useState<
-    RecomendedPlaylistState[]
+    Playlists[]
   >([]);
   const playlistsID: string[] = [
     "37i9dQZEVXbNG2KDcFcKOF",
