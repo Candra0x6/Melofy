@@ -1,27 +1,28 @@
-import { IconButton } from "@chakra-ui/react";
 import UseAlbumDetail from "../../../hooks/UseAlbumDetail";
 import UseAlbumTracks from "../../../hooks/UseAlbumTracks";
-import { West } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import ConvertMiliSecond from "../../../hooks/ConvertMiliSecond";
+import ButtonBack from "../../../components/ButtonBack";
+import { ButtonInteract } from "../../../components/ButtonInteract";
+import UseUserFollowAlbum from "../../../hooks/UseUserFollowAlbum";
 
 function AlbumDetail() {
   const { albumDetail } = UseAlbumDetail();
   const { albumTracks } = UseAlbumTracks();
+  const { checkSavedAlbum, isSaveAlbum, removeAlbum, saveAlbum } =
+    UseUserFollowAlbum();
   const { convertMiliseconds } = ConvertMiliSecond();
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center overflow-hidden relative">
       <div className="container">
         <div className="flex flex-col mx-2">
-          <div className="flex w-full justify-start ml-2 ">
-            <IconButton
-              position="absolute"
-              top="2"
-              onClick={() => window.history.back()}
-              aria-label="Backk"
-              bgColor="#F7FCFE"
-              rounded="full"
-              icon={<West sx={{ fontSize: 28 }} />}
+          <div className="flex w-full">
+            <ButtonBack />
+            <ButtonInteract
+              addItems={saveAlbum}
+              getIsFollow={checkSavedAlbum}
+              isFollow={isSaveAlbum}
+              removeItems={removeAlbum}
             />
           </div>
           <div className="flex items-center mt-20">
