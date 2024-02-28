@@ -14,12 +14,12 @@ function Header() {
   return (
     <>
       <header
-        className={`flex justify-center w-full font-poppins fixed top-0 z-40 rounded-full mt-2 transition-all duration-500 ${
+        className={`flex justify-center w-full font-poppins fixed top-0 z-40 rounded-full bg-transparent mt-2 transition-all duration-500 ${
           visibleNav ? "-translate-y-[10vh]" : "translate-y-0"
         }`}
       >
-        <div className="container mx-2 backdrop-blur-lg brightness-125 p-3 border-[1px] border-gray-600 rounded-full w-[95%]">
-          <div className="flex">
+        <div className="container ">
+          <div className="flex mx-2 backdrop-blur-md mt-1 h-[99%] brightness-125 p-3 border-[1px] bg-gradient-to-r from-[#abebff98] to-[#abebff98] border-black rounded-full">
             <nav className="flex justify-between items-center w-full">
               <div
                 className="cursor-pointer"
