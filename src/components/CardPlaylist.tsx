@@ -1,12 +1,12 @@
 import { IconButton } from "@chakra-ui/react";
-import { Category, Playlists } from "../hooks";
+import { Playlists } from "../hooks";
 import UseTruncateText from "../hooks/UseTruncateText";
 import { MoreVert } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
+import NonImg from "../assets/MusicIcon/NonImage.png";
 interface PlaylistComponent {
   title: string | undefined;
-  data: Playlists[] | undefined;
+  data: Playlists[];
 }
 function CardPlaylist({ title, data }: PlaylistComponent) {
   const { truncateText } = UseTruncateText();
@@ -20,7 +20,7 @@ function CardPlaylist({ title, data }: PlaylistComponent) {
               <div className="flex gap-x-3 items-center">
                 <div className="h-[60px] w-[60px] aspect-square">
                   <img
-                    src={track.images[0].url}
+                    src={(track.images[0] && track.images[0].url) || NonImg}
                     className=" w-full h-full rounded-md"
                     alt={`Track${id}`}
                   />
