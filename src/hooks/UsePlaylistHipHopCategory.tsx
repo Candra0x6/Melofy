@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { Playlist } from ".";
+import { Playlists } from ".";
 
 function UsePlaylistHipHopCategory() {
   const getAT = localStorage.getItem("access_token");
-  const [hipHopPlaylist, setHipHopPlaylist] = useState<Playlist[]>([]);
+  const [hipHopPlaylist, setHipHopPlaylist] = useState<Playlists[]>([]);
   const getPlaylistByHipHopCategory = async () => {
     try {
       const fetch = await axios.get(
