@@ -24,6 +24,7 @@ function Signup() {
     "playlist-read-collaborative",
     "playlist-modify-private",
     "playlist-modify-public",
+    "ugc-image-upload",
   ];
 
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(
