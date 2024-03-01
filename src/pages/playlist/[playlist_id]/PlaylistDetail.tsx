@@ -1,4 +1,3 @@
-import PlaylistIMG from "../../../assets/MusicIcon/music1.jpeg";
 import UsePlaylistDetails from "../../../hooks/UsePlaylistDetails";
 import CardTrack from "../../../components/CardTrack";
 import ButtonBack from "../../../components/ButtonBack";
@@ -6,6 +5,7 @@ import UseTruncateText from "../../../hooks/UseTruncateText";
 import { Image } from "@chakra-ui/react";
 import { ButtonInteract } from "../../../components/ButtonInteract";
 import { UseUserFollowPlaylistItem } from "../../../hooks/UseUserFollowPlaylist";
+import NonImage from "../../../assets/MusicIcon/NonImage.png";
 
 function PlaylistDetail() {
   const { truncateText } = UseTruncateText();
@@ -15,6 +15,7 @@ function PlaylistDetail() {
     isFollowPlaylist,
     getIsFollowPlaylist,
   } = UseUserFollowPlaylistItem();
+
   const { playlistDetail } = UsePlaylistDetails();
 
   return (
@@ -35,7 +36,12 @@ function PlaylistDetail() {
             playlistDetail.images &&
             playlistDetail !== undefined && (
               <Image
-                src={playlistDetail.images[0].url || PlaylistIMG}
+                maxH="400px"
+                src={
+                  playlistDetail.images !== null
+                    ? playlistDetail.images[0].url
+                    : NonImage
+                }
                 alt="Playlist Cover"
                 w="full"
               />
